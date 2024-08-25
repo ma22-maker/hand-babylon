@@ -1,0 +1,46 @@
+{
+  "name": "hand-babylon",
+  "version": "0.7.0",
+  "private": true,
+  "title": "Hand Tracking Demo",
+  "description": "Geenee hand tracking demo",
+  "dependencies": {
+    "@babylonjs/core": "^6.41.0",
+    "@babylonjs/loaders": "^6.41.0",
+    "@geenee/bodyrenderers-babylon": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.14",
+    "copy-webpack-plugin": "^11.0.0",
+    "copyfiles": "^2.4.1",
+    "css-loader": "^6.8.1",
+    "esbuild-loader": "^4.0.2",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.6.1",
+    "serve": "^14.2.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "scripts": {
+    "start": "webpack serve --mode=development",
+    "start:https": "webpack serve --mode=development --https",
+    "build": "webpack build --mode=production",
+    "serve": "serve -p 3000 -s build",
+    "postinstall": "npm run post:wasm",
+    "post:wasm": "copyfiles -f \"node_modules/@geenee/bodytracking/dist/*.wasm\" public/"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
