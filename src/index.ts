@@ -7,7 +7,7 @@ import { Watchview } from "./WatchViewer";
 const engine = new HandEngine();
 const token =
   location.hostname === "localhost"
-    ? "iV6ssLqhZ4zTG6CXXRa28gNZOwvHje_E"
+    ? "5zUXNTvrFMDtqB0rox5FlQf8Vg1jxtbe"
     : "iV6ssLqhZ4zTG6CXXRa28gNZOwvHje_E";
 
 // Parameters
