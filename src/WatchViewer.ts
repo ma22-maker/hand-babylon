@@ -1,7 +1,7 @@
 import * as BABYLON from '@babylonjs/core';
 import "@babylonjs/loaders/glTF/2.0";
 
-export async function Watchview() {
+export async function Watchview(watchModel) {
   const container = document.getElementById('view-3d');
   if (!container) return;
 
@@ -19,12 +19,12 @@ export async function Watchview() {
   new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 1, 0), scene);
 
   try {
-    await BABYLON.SceneLoader.AppendAsync('', 'watch.glb', scene);
+    await BABYLON.SceneLoader.AppendAsync('', watchModel, scene);
     
     // Scale the loaded model
     scene.meshes.forEach(mesh => {
       if (mesh.name !== 'camera' && mesh.name !== 'light') {
-        mesh.scaling = new BABYLON.Vector3(4,4,4); // Adjust the scaling factor as needed
+        mesh.scaling = new BABYLON.Vector3(4, 4, 4); // Adjust the scaling factor as needed
       }
     });
   } catch (error) {
