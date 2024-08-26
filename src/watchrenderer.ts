@@ -34,7 +34,8 @@ export class WatchRenderer extends HandRenderer {
         scene.environmentTexture = new CubeTexture("environment.env", scene);
         const light = new DirectionalLight("directional",
             new Vector3(0.5, 0.5, -2), scene);
-        // light.intensity = 0.5;
+        light.intensity = 0.5;
+
         // Model
         await this.setModel(this.url);
         return super.load();

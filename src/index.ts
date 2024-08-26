@@ -3,14 +3,12 @@ import { WatchRenderer } from "./watchrenderer";
 import "./index.css";
 import { Watchview } from "./WatchViewer";
 
-// Engine
 const engine = new HandEngine();
 const token: string =
   location.hostname === "localhost"
     ? "5zUXNTvrFMDtqB0rox5FlQf8Vg1jxtbe"
     : "iV6ssLqhZ4zTG6CXXRa28gNZOwvHje_E";
 
-// Parameters
 const urlParams = new URLSearchParams(window.location.search);
 const rear: boolean = urlParams.has("rear");
 
@@ -46,8 +44,6 @@ document.querySelectorAll(".try-on").forEach((button) => {
       console.error("No watch model found.");
       return;
     }
-
-    // Hide other elements
     const watchContainer = document.getElementById("watch-container");
     const header = document.querySelector("header");
     const rootElement = document.getElementById("root");
@@ -58,8 +54,6 @@ document.querySelectorAll(".try-on").forEach((button) => {
       rootElement.classList.remove("hidden");
       rootElement.style.display = "block";
     }
-
-    // Start the main function
     await main(watchModel);
   });
 });

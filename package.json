@@ -2,8 +2,8 @@
   "name": "hand-babylon",
   "version": "0.7.0",
   "private": true,
-  "title": "Hand Tracking Demo",
-  "description": "Geenee hand tracking demo",
+  "title": "Hand Tracking ",
+  "description": "hand tracking demo",
   "dependencies": {
     "@babylonjs/core": "^6.41.0",
     "@babylonjs/loaders": "^6.41.0",
