@@ -7,7 +7,8 @@
   "dependencies": {
     "@babylonjs/core": "^6.41.0",
     "@babylonjs/loaders": "^6.41.0",
-    "@geenee/bodyrenderers-babylon": "^0.7.0"
+    "@geenee/bodyrenderers-babylon": "^0.7.0",
+    "dotenv-webpack": "^8.1.0"
   },
   "devDependencies": {
     "@types/node": "^18.19.14",

@@ -1,4 +1,5 @@
 const { EsbuildPlugin } = require("esbuild-loader");
+const Dotenv = require("dotenv-webpack");
 const HtmlPlugin = require("html-webpack-plugin");
 const CssPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -6,7 +7,11 @@ const path = require("path");
 const pkg = require("./package.json");
 
 var config = {
-    entry: "./src/index.ts",
+    entry: {
+        main: "./src/index.ts",
+        view: "./src/view.ts",
+        try: "./src/try.ts"
+    },
     module: {
         rules: [
             {
@@ -36,15 +41,32 @@ var config = {
         fallback: { crypto: false }
     },
     output: {
-        filename: 'index.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'build')
     },
     plugins: [
         new HtmlPlugin({
             template: "src/index.html",
             title: pkg.title || "Engeenee Hand Demo",
-            meta: { description: pkg.description || "Engeenee Hand demo" }
+            meta: { description: pkg.description || "Engeenee Hand demo" },
+            chunks: ['main']
         }),
+
+        new HtmlPlugin({
+            template: "src/view.html",
+            filename: "view.html",
+            title: "View 3D Model",
+            chunks: ['view']
+           
+        }),
+        new HtmlPlugin({
+            template: "src/try.html",
+            filename: "try.html",
+            title: "Try On Watch",
+            chunks: ['try']
+           
+        }),
+        new Dotenv(),
         new CssPlugin()
     ]
 };
@@ -68,7 +90,8 @@ module.exports = (_, argv) => {
         config.plugins.push(new CopyPlugin({
             patterns: ["public"]
         }));
-        config.output.filename = "index.[fullhash].js";
+        config.output.filename = '[name].[fullhash].js';
     }
+    // config.plugins.push(new Dotenv());
     return config;
 }

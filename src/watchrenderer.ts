@@ -34,7 +34,7 @@ export class WatchRenderer extends HandRenderer {
         scene.environmentTexture = new CubeTexture("environment.env", scene);
         const light = new DirectionalLight("directional",
             new Vector3(0.5, 0.5, -2), scene);
-        light.intensity = 0.5;
+        // light.intensity = 0.5;
 
         // Model
         await this.setModel(this.url);
@@ -58,11 +58,8 @@ export class WatchRenderer extends HandRenderer {
         
         gltf.addAllToScene();
 
-        console.log(gltf)
 
         const occluders = gltf.meshes.filter((m) => /Body/.test(m.name));
-
-        console.log(occluders)
 
         occluders.forEach((o) => {
             o.material = new OccluderMaterial("Occluder", this.scene);

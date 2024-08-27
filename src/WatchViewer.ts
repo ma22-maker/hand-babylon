@@ -21,7 +21,7 @@ export async function Watchview(watchModel) {
   try {
     await BABYLON.SceneLoader.AppendAsync('', watchModel, scene);
     
-  
+    // Scale the loaded model
     scene.meshes.forEach(mesh => {
       if (mesh.name !== 'camera' && mesh.name !== 'light') {
         mesh.scaling = new BABYLON.Vector3(4, 4, 4); 
